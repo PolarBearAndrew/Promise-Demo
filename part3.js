@@ -30,15 +30,15 @@ let job = (filename, enc) => {
 //沒錯誤發生的範例
 job('A.txt')
 	//其實就是把callback改寫成一個.then而已
-	.then( (result) => {
+	.then( result => {
 		console.log('A Done');
 		return job('A.txt'); //直接retur一個promise物件,可以繼續用then承接下一個call back
 	})
-	.then( (result) => {
+	.then( result => {
 		console.log('A2 Done');
 	})
 	//寫一個catch 就可以承接之前每一層if(err)要去檢查的錯誤
-	.catch( (err)=> {
+	.catch( err => {
 		console.log('err', err);
 	})
 
@@ -48,15 +48,15 @@ console.log('================');
 /*
 job('A.txt')
 	//其實就是把callback改寫成一個.then而已
-	.then( (result) => {
+	.then( result => {
 		console.log('A Done');
 		return job('B.txt'); //直接retur一個promise物件,可以繼續用then承接下一個call back
 	})
-	.then( (result) => {
+	.then( result => {
 		console.log('B Done');
 	})
 	//寫一個catch 就可以承接之前每一層if(err)要去檢查的錯誤
-	.catch( (err)=> {
+	.catch( err => {
 		console.log('err', '<-- B沒有完成會被catch err到這邊來');
 	})
 */

@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-console.log('part 3 ');
+console.log('part 4 ');
 
 let job = (filename, enc) => {
     return new Promise(function(fulfill, reject) {
@@ -16,22 +16,22 @@ let job = (filename, enc) => {
 
 job('B.txt')
 	//其實就是把callback改寫成一個.then而已
-	.then( (result) => {
+	.then( result => {
 		console.log('B Done');
 		return job('A.txt');
 	})
-	.then( (result) => {
+	.then( result => {
 		console.log('A Done'); //這行是不會發生的,因為A就錯了,他會忽略這個,跳到catch
 	})
-	.catch( (err)=> {
+	.catch( err => {
 		console.log('err', '<-- B沒有完成會被catch err到這邊來, 會跳過發生錯誤的地方和catch之間的錯誤');
 
 	})
 	//catch可以不只有一個,所以直接解開28行的註解和31行之後的註解,可以再承接B的錯誤之後,繼續做事情
-	.then( (result) => {
+	.then( result => {
 		console.log('A Done <--第一個catch之後的事情');
 	})
-	.catch( (err)=> {
+	.catch( err => {
 		console.log('如果又錯了,會被catch到這邊來');
 	})
 
