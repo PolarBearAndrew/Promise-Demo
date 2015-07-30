@@ -4,10 +4,10 @@ console.log('part 5 ');
 
 var myJob = (filename) => {
 
-    return new Promise(function(fulfill, reject) {
+    return new Promise(function(resolve, reject) {
         return fs.readFile(filename, function(err, res) {
         	if (err) return reject(err);
-            else return fulfill(res);
+            else return resolve(res);
         });
     });
 }
@@ -36,3 +36,7 @@ Promise.all(jobAll)
 // 		.catch( err => {
 // 			console.log('err', err);
 // 		});
+
+
+
+//註：兩份promise一起執行就有種兩個執行緒同時啟動的感覺

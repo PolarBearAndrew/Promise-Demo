@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 console.log('part 3 ');
-
+console.log('================');
 
 //所以我們要用promise ~!!
 //
@@ -12,10 +12,10 @@ console.log('part 3 ');
 //不過實際上沒有這麼麻煩, 只有自己撰寫自己的功能時才需要這樣包裝
 
 let job = (filename, enc) => {
-    return new Promise(function(fulfill, reject) {
+    return new Promise(function(resolve, reject) {
         fs.readFile(filename, enc, function(err, res) {
             if (err) reject(err);
-            else fulfill(res);
+            else resolve(res);
         });
     });
 }
@@ -42,7 +42,7 @@ job('A.txt')
 		console.log('err', err);
 	})
 
-console.log('================');
+
 
 //有err發生的範例
 /*

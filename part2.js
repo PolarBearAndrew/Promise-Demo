@@ -2,6 +2,7 @@ import fs from 'fs';
 
 console.log('part 2 ');
 
+//這個part2隨便看看就好了XD
 //如果我需要讓他AB照順序進行, 就需要做下列操作
 
 let job = ( filename, callback) => {

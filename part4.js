@@ -3,10 +3,10 @@ import fs from 'fs';
 console.log('part 4 ');
 
 let job = (filename, enc) => {
-    return new Promise(function(fulfill, reject) {
+    return new Promise(function(resolve, reject) {
         fs.readFile(filename, enc, function(err, res) {
             if (err) reject(err);
-            else fulfill(res);
+            else resolve(res);
         });
     });
 }
@@ -21,15 +21,15 @@ job('B.txt')
 		return job('A.txt');
 	})
 	.then( result => {
-		console.log('A Done'); //這行是不會發生的,因為A就錯了,他會忽略這個,跳到catch
+		console.log('A1 Done'); //這行是不會發生的,因為A就錯了,他會忽略這個,跳到catch
 	})
 	.catch( err => {
-		console.log('err', '<-- B沒有完成會被catch err到這邊來, 會跳過發生錯誤的地方和catch之間的錯誤');
-
+		console.log('err <-- B沒有完成會被catch err到這邊來, 會跳過發生錯誤的地方和catch之間的錯誤');
+		return job('A.txt');
 	})
-	//catch可以不只有一個,所以直接解開28行的註解和31行之後的註解,可以再承接B的錯誤之後,繼續做事情
+	//catch可以不只有一個,所以28行之後串接的程式碼,可以讓前面承接B的錯誤的catch之後繼續做事情
 	.then( result => {
-		console.log('A Done <--第一個catch之後的事情');
+		console.log('A2 Done <--第一個catch告訴他如果錯誤的繼續做的工作');
 	})
 	.catch( err => {
 		console.log('如果又錯了,會被catch到這邊來');
