@@ -1,15 +1,15 @@
 import fs from 'fs';
 
 console.log('part 1 ');
+console.log('================');
 
 // promise 主要用來解決 javascript 兩個問題：
-// 1. callback hell
-// 2. 同時多層的callback會衍生出 超多層的 if(err) 這個問題 err回傳也相當麻煩
-// 下面是這兩個問題的範例
+// 1. callback太多層
+// 2. 同時多層的callback每次都要檢查err, err回傳也相當麻煩
+//以下是一般包裝一個func的方式
+//(還沒有使用callback)
 
 let job = ( filename, callback) => {
-
-	console.log('Job start', filename);
 
 	//寫這一坨很醜
 	fs.readFile(filename, 'utf8', function (err, res){

@@ -1,8 +1,9 @@
 import fs from 'fs';
 
 console.log('part 2 ');
+console.log('================');
 
-//這個part2隨便看看就好了XD
+//這個part2就是所謂之前會發生的狀況
 //如果我需要讓他AB照順序進行, 就需要做下列操作
 
 let job = ( filename, callback) => {
@@ -25,10 +26,9 @@ let job = ( filename, callback) => {
 job('A.txt', ( err, data ) => {
 	if(err){
 		console.log('讀取A.txt失敗', err)
-		//一般來說在這邊終止整個程序,這邊我讓他繼續
 	}else{
 		console.log('Done A');
-	}
+
 		job('B.txt', ( err, data ) => {
 			if(err){
 				console.log('讀取B.txt失敗', '<--他這次有乖乖在A後面');
@@ -36,6 +36,7 @@ job('A.txt', ( err, data ) => {
 				console.log('Done B', '<--他這次有乖乖在A後面');
 			}
 		});
+	}
 });
 
 //====================
